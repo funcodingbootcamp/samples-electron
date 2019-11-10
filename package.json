@@ -24,7 +24,7 @@
   "build": {
     "appId": "ru.busation.samples-electron",
     "win": {
-      "icon": "images/logo.png",
+      "icon": "images/icon.ico",
       "target": [
         "nsis"
       ]
@@ -36,6 +36,7 @@
       "createStartMenuShortcut": true
     },
     "mac": {
+      "icon": "images/icon.icns",
       "target": [
         "dmg",
         "zip"

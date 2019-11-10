@@ -54,7 +54,7 @@ app.on('activate', () => {
 
 // MESSAGE
 setTimeout(() => {
-    const logoIcon = path.join(__dirname, './images/logo.png');
+    const logoIcon = path.join(__dirname, './images/icon.png');
 
     const notific = new Notification({
         title: 'Message from MAIN',

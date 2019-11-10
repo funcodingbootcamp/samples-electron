@@ -18,7 +18,7 @@ let progressInterval = setInterval(() => {
 setTimeout(() => {
     let myNotification = new Notification('Message from RENDERER', {
         body: 'Lorem Ipsum Dolor Sit AmetT',
-        icon: './images/logo.png'
+        icon: './images/icon.png'
     });
 
     myNotification.onclick = () => {
