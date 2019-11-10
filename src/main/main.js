@@ -2,6 +2,8 @@ const { app, BrowserWindow, Notification } = require('electron');
 const windowStateKeeper = require('electron-window-state');
 const path = require('path');
 const electronLog = require('electron-log');
+const os = require('os');
+
 require('./menu');
 const { runAutoUpdater } = require('./runAutoUpdater');
 
@@ -14,7 +16,6 @@ app.setAppUserModelId('ru.busation.samples-electron');
 let mainWindow;
 
 function createWindow() {
-    runAutoUpdater();
     let mainWindowState = windowStateKeeper({
         defaultWidth: 1000,
         defaultHeight: 600
@@ -32,6 +33,8 @@ function createWindow() {
         },
         show: true
     });
+
+    runAutoUpdater();
 
     mainWindowState.manage(mainWindow);
     mainWindow.loadFile(path.join(__dirname, '../index.html'));
@@ -61,18 +64,18 @@ app.on('activate', () => {
 // NOTIFICATIONS
 // setTimeout(() => {
 //     const logoIcon = path.join(__dirname, '../images/icon.png');
-//
 //     const notific = new Notification({
 //         title: 'Message from MAIN',
-//         body: 'Lorem Ipsum Dolor Sit AmetT',
+//         body: 'Click to quit the APP',
 //         icon: logoIcon
 //     });
-//
 //     notific.on('click', () => {
 //         console.log('MAIN notification clicked');
 //         app.quit();
 //     });
-//
+//     notific.on('show', () => {
+//         electronLog.debug('show Message from MAIN');
+//     });
 //     notific.show();
 // }, 2000);
 
