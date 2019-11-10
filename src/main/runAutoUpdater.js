@@ -52,8 +52,8 @@ const setAutoUpdater = () => {
     });
 
     autoUpdater.on('update-downloaded', () => {
-        // If update-downloaded notification is created before update-available is closed, click event does not work.
-        // Thats why we add setTimeout 3000
+        // For Windows: If update-downloaded notification is created before update-available is closed,
+        // click event does not work. Thats why we add setTimeout 3000
         setTimeout(async () => {
             if (isNotificationsSupported) {
                 const notification2 = new Notification({
