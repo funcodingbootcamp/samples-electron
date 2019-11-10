@@ -1,9 +1,9 @@
 {
   "name": "electron_udemy",
-  "productName": "Electron Udemy App",
+  "productName": "Electron Samples",
   "version": "1.0.0",
-  "description": "Electron Udemy App",
-  "main": "main.js",
+  "description": "Electron Samples",
+  "main": "src/main/main.js",
   "scripts": {
     "pack": "electron-builder --dir",
     "start": "electron .",
@@ -24,7 +24,7 @@
   "build": {
     "appId": "ru.busation.samples-electron",
     "win": {
-      "icon": "images/icon.ico",
+      "icon": "src/images/icon.ico",
       "target": [
         "nsis"
       ]
@@ -36,12 +36,11 @@
       "createStartMenuShortcut": true
     },
     "mac": {
-      "icon": "images/icon.icns",
+      "icon": "src/images/icon.icns",
       "target": [
         "dmg",
         "zip"
       ],
-      "identity": null,
       "category": "public.app-category.utilities"
     }
   },
@@ -54,6 +53,9 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
-    "electron-window-state": "^5.0.3"
+    "electron-log": "^3.0.9",
+    "electron-updater": "^4.2.0",
+    "electron-window-state": "^5.0.3",
+    "node-notifier": "^5.4.3"
   }
 }

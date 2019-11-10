@@ -13,8 +13,8 @@
 <h1>Samples Electron</h1>
 <div>version: <span id="version"></span></div>
 <script>
-    require('./renderer.js');
-    const version = require('./package.json').version;
+    require('./renderer/renderer.js');
+    const version = require('../package.json').version;
     document.getElementById("version").innerHTML = version;
 </script>
 </body>
