@@ -61,21 +61,22 @@ app.on('activate', () => {
 });
 
 // NOTIFICATIONS
-setTimeout(() => {
-    const logoIcon = path.join(__dirname, '../images/icon.png');
-
-    const notific = new Notification({
-        title: 'Message from MAIN',
-        body: 'Lorem Ipsum Dolor Sit AmetT',
-        icon: logoIcon
-    });
-
-    notific.on('click', () => {
-        console.log('MAIN notification clicked');
-    });
-
-    notific.show();
-}, 2000);
+// setTimeout(() => {
+//     const logoIcon = path.join(__dirname, '../images/icon.png');
+//     const notific = new Notification({
+//         title: 'Message from MAIN',
+//         body: 'Click to quit the APP',
+//         icon: logoIcon
+//     });
+//     notific.on('click', () => {
+//         console.log('MAIN notification clicked');
+//         app.quit();
+//     });
+//     notific.on('show', () => {
+//         electronLog.debug('show Message from MAIN');
+//     });
+//     notific.show();
+// }, 2000);
 
 // NOTIFICATION node-notifier
 // does not work well for mac
