@@ -4,6 +4,7 @@ const electronLog = require('electron-log');
 const path = require('path');
 
 const START_DELAY = 3000;
+const { IS_MAC } = require('../constants/app');
 
 const iconPath = path.join(__dirname, '../images/icon.png');
 const icon = nativeImage.createFromPath(iconPath);
@@ -26,7 +27,7 @@ const setAutoUpdater = () => {
             const notification = new Notification({
                 title: 'Update is available',
                 body: 'An update is available, click to download it',
-                icon
+                icon: IS_MAC ? null : icon
             });
             notification.on('click', () => {
                 autoUpdater.downloadUpdate();
@@ -54,7 +55,7 @@ const setAutoUpdater = () => {
             const notification = new Notification({
                 title: 'Update is ready',
                 body: 'The update is ready, click to install and restart now',
-                icon
+                icon: IS_MAC ? null : icon
             });
             notification.on('click', () => {
                 autoUpdater.quitAndInstall();

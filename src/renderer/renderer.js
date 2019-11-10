@@ -1,5 +1,7 @@
 const { remote } = require('electron');
 
+const { IS_MAC } = require('../constants/app');
+
 // const self = remote.getCurrentWindow();
 
 // Progress bar
@@ -19,7 +21,7 @@ const { remote } = require('electron');
 setTimeout(() => {
     let myNotification = new Notification('Message from RENDERER', {
         body: 'Test notification',
-        icon: './images/icon.png'
+        icon: IS_MAC ? null : './images/icon.png'
     });
 
     myNotification.onclick = () => {

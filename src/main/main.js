@@ -2,6 +2,8 @@ const { app, BrowserWindow, Notification } = require('electron');
 const windowStateKeeper = require('electron-window-state');
 const path = require('path');
 const electronLog = require('electron-log');
+const os = require('os');
+
 require('./menu');
 const { runAutoUpdater } = require('./runAutoUpdater');
 
@@ -59,22 +61,21 @@ app.on('activate', () => {
 });
 
 // NOTIFICATIONS
-// setTimeout(() => {
-//     const logoIcon = path.join(__dirname, '../images/icon.png');
-//
-//     const notific = new Notification({
-//         title: 'Message from MAIN',
-//         body: 'Lorem Ipsum Dolor Sit AmetT',
-//         icon: logoIcon
-//     });
-//
-//     notific.on('click', () => {
-//         console.log('MAIN notification clicked');
-//         app.quit();
-//     });
-//
-//     notific.show();
-// }, 2000);
+setTimeout(() => {
+    const logoIcon = path.join(__dirname, '../images/icon.png');
+
+    const notific = new Notification({
+        title: 'Message from MAIN',
+        body: 'Lorem Ipsum Dolor Sit AmetT',
+        icon: logoIcon
+    });
+
+    notific.on('click', () => {
+        console.log('MAIN notification clicked');
+    });
+
+    notific.show();
+}, 2000);
 
 // NOTIFICATION node-notifier
 // does not work well for mac
