@@ -16,7 +16,6 @@ app.setAppUserModelId('ru.busation.samples-electron');
 let mainWindow;
 
 function createWindow() {
-    runAutoUpdater();
     let mainWindowState = windowStateKeeper({
         defaultWidth: 1000,
         defaultHeight: 600
@@ -34,6 +33,8 @@ function createWindow() {
         },
         show: true
     });
+
+    runAutoUpdater();
 
     mainWindowState.manage(mainWindow);
     mainWindow.loadFile(path.join(__dirname, '../index.html'));
