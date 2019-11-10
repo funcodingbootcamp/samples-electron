@@ -1,0 +1,58 @@
+{
+  "name": "electron_udemy",
+  "productName": "Electron Udemy App",
+  "version": "1.0.0",
+  "description": "Electron Udemy App",
+  "main": "main.js",
+  "scripts": {
+    "pack": "electron-builder --dir",
+    "start": "electron .",
+    "inspect": "electron --inspect-brk=5858 .",
+    "reset": "git reset --hard",
+    "buildWin": "electron-builder build --win",
+    "buildMac": "electron-builder build --mac",
+    "publish": "electron-builder -wm -p always",
+    "electron-rebuild": "electron-rebuild",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "repository": "https://github.com/codingbootcampru/samples-electron",
+  "keywords": [
+    "electron",
+    "samples",
+    "demo"
+  ],
+  "build": {
+    "appId": "ru.busation.samples-electron",
+    "win": {
+      "icon": "images/logo.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "runAfterFinish": true,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createStartMenuShortcut": true
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "identity": null,
+      "category": "public.app-category.utilities"
+    }
+  },
+  "author": "klishevich",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "6.1.4",
+    "electron-builder": "21.2.0",
+    "electron-rebuild": "^1.8.6",
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "electron-window-state": "^5.0.3"
+  }
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'" />
+    <title>Samples Electron</title>
+    <style media="screen">
+        body {
+        }
+    </style>
+</head>
+<body>
+<h1>Samples Electron</h1>
+<div>version: <span id="version"></span></div>
+<script>
+    require('./renderer.js');
+    const version = require('./package.json').version;
+    document.getElementById("version").innerHTML = version;
+</script>
+</body>
+</html>
