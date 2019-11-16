@@ -81,7 +81,7 @@ const setAutoUpdater = () => {
                     autoUpdater.quitAndInstall(false, true);
                 }
             }
-        }, 3000)
+        }, 5000)
     });
 
     // autoUpdater.on('download-progress', (progressObj: any) => {

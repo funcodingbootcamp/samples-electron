@@ -1,7 +1,7 @@
 {
   "name": "electron_udemy",
   "productName": "Electron Samples",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Electron Samples",
   "main": "src/main/main.js",
   "scripts": {
