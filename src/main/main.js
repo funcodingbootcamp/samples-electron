@@ -34,7 +34,7 @@ function createWindow() {
         show: true
     });
 
-    runAutoUpdater();
+    runAutoUpdater(mainWindow);
 
     mainWindowState.manage(mainWindow);
     mainWindow.loadFile(path.join(__dirname, '../index.html'));

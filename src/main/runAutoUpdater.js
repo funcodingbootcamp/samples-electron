@@ -13,7 +13,7 @@ autoUpdater.logger = electronLog;
 
 autoUpdater.autoDownload = false;
 
-const setAutoUpdater = () => {
+const setAutoUpdater = mainWindow => () => {
     const isNotificationsSupported = Notification.isSupported();
     electronLog.debug('isNotificationsSupported', isNotificationsSupported);
 
@@ -51,6 +51,14 @@ const setAutoUpdater = () => {
         }
     });
 
+    autoUpdater.on('download-progress', (progressObj) => {
+        electronLog.debug('progressObj', JSON.stringify(progressObj));
+        const percent = progressObj && progressObj.percent;
+        if (typeof percent === 'number') {
+            mainWindow.setProgressBar(percent / 100);
+        }
+    });
+
     autoUpdater.on('update-downloaded', () => {
         // For Windows: If update-downloaded notification is created before update-available is closed,
         // click event does not work. Thats why we add setTimeout 3000
@@ -84,25 +92,6 @@ const setAutoUpdater = () => {
         }, 5000)
     });
 
-    // autoUpdater.on('download-progress', (progressObj: any) => {
-    // let logMessage: string = 'Downloaded ';
-    // const percent = progressObj.percent;
-    // TYPE NUMBER
-    // electronLog.debug('typeof percent', typeof percent);
-    // electronLog.debug('percent', percent);
-    // if (typeof percent === 'string' || percent instanceof String) {
-    //     logMessage += percent.substr(0, 5);
-    // } else if (typeof percent === 'number') {
-    //     logMessage += Math.floor(percent);
-    // } else {
-    //     logMessage += percent;
-    // }
-    // logMessage += '%';
-    // // let log_message = 'Download speed: ' + progressObj.bytesPerSecond;
-    // // log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
-    // // log_message = log_message + ' (' + progressObj.transferred + '/' + progressObj.total + ')';
-    // sendNotificationToWindow(logMessage);
-    // });
 };
 
-exports.runAutoUpdater = () => setTimeout(setAutoUpdater, START_DELAY);
+exports.runAutoUpdater = (mainWindow) => setTimeout(setAutoUpdater(mainWindow), START_DELAY);
