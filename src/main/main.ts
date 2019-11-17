@@ -1,19 +1,21 @@
-const { app, BrowserWindow, Notification } = require('electron');
-const windowStateKeeper = require('electron-window-state');
-const path = require('path');
-const electronLog = require('electron-log');
-const os = require('os');
+import { app, BrowserWindow, Notification } from 'electron';
+import * as windowStateKeeper from 'electron-window-state';
+import * as path from 'path';
+import * as electronLog from 'electron-log';
+import * as isDev from 'electron-is-dev';
 
-require('./menu');
-const { runAutoUpdater } = require('./runAutoUpdater');
+import { LOG_LEVEL, DEBUG_MODE } from '../constants/app';
+
+import './menu';
+import { runAutoUpdater } from './runAutoUpdater';
 
 // set log level for the main process
-electronLog.transports.file.level = 'debug';
+electronLog.transports.file.level = LOG_LEVEL;
 
 // for notifications
 app.setAppUserModelId('ru.busation.samples-electron');
 
-let mainWindow;
+let mainWindow: BrowserWindow;
 
 function createWindow() {
     let mainWindowState = windowStateKeeper({
@@ -48,6 +50,7 @@ function createWindow() {
 
 // Electron `app` is ready
 app.on('ready', () => {
+    enableHotReload();
     createWindow();
 });
 
@@ -60,6 +63,14 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
     if (mainWindow === null) createWindow();
 });
+
+function enableHotReload() {
+    // Comment this out to disable hot-reload
+    if (isDev) {
+        const hotReloader = require('electron-reload');
+        hotReloader(path.join(__dirname, '../'));
+    }
+}
 
 // NOTIFICATIONS
 // setTimeout(() => {

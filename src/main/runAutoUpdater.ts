@@ -1,7 +1,7 @@
-const { dialog, nativeImage, Notification } = require('electron');
-const { autoUpdater } = require('electron-updater');
-const electronLog = require('electron-log');
-const path = require('path');
+import { dialog, nativeImage, Notification, BrowserWindow } from  'electron';
+import { autoUpdater }  from 'electron-updater';
+import * as electronLog from 'electron-log';
+import * as path from 'path';
 
 const START_DELAY = 3000;
 const { IS_MAC } = require('../constants/app');
@@ -13,7 +13,7 @@ autoUpdater.logger = electronLog;
 
 autoUpdater.autoDownload = false;
 
-const setAutoUpdater = mainWindow => () => {
+const setAutoUpdater = (mainWindow: BrowserWindow) => () => {
     const isNotificationsSupported = Notification.isSupported();
     electronLog.debug('isNotificationsSupported', isNotificationsSupported);
 
@@ -94,4 +94,4 @@ const setAutoUpdater = mainWindow => () => {
 
 };
 
-exports.runAutoUpdater = (mainWindow) => setTimeout(setAutoUpdater(mainWindow), START_DELAY);
+export const runAutoUpdater = (mainWindow: BrowserWindow) => setTimeout(setAutoUpdater(mainWindow), START_DELAY);

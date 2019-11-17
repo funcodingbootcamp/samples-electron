@@ -1,0 +1,4 @@
+owner: codingbootcampru
+repo: samples-electron
+provider: github
+updaterCacheDirName: samples-electron-updater

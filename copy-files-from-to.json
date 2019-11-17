@@ -1,0 +1,12 @@
+{
+  "copyFiles": [
+    {
+      "from": "./src/images/**/*",
+      "to": "./build/images/"
+    },
+    {
+      "from": "./src/index.html",
+      "to": "./build/index.html"
+    }
+  ]
+}
