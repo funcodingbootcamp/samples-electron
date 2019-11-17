@@ -40,7 +40,6 @@ function createWindow() {
 
     mainWindowState.manage(mainWindow);
     mainWindow.loadFile(path.join(__dirname, '../index.html'));
-    mainWindow.webContents.openDevTools();
 
     // Listen for window being closed
     mainWindow.on('closed', () => {

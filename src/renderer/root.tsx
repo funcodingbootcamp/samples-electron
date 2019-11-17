@@ -14,8 +14,14 @@ export default function Root() {
             <div>
                 <img src='./images/icon.png' width={100} />
             </div>
-            <div data-test-id='test-button'>{buttonState ? `clicked ${buttonState} times` : 'not clicked'}</div>
-            <Button variant='outline-primary' onClick={handleButtonClick}>
+            <div id='test-value'>
+                {buttonState ? `clicked ${buttonState} times` : 'not clicked'}
+            </div>
+            <Button
+                id='test-button'
+                variant='outline-primary'
+                onClick={handleButtonClick}
+            >
                 Primary
             </Button>
         </div>
