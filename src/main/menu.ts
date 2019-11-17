@@ -13,6 +13,7 @@ const menuItem1 = new MenuItem({
             accelerator: 'Shift+Alt+K'
         },
         { label: 'DevTools', role: 'toggleDevTools' },
+        { role: 'reload' },
         { role: 'quit' }
     ]
 });
