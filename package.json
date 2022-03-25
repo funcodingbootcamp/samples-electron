@@ -57,7 +57,7 @@
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "copy-files-from-to": "^2.1.0",
-    "electron": "6.1.4",
+    "electron": "13.6.6",
     "electron-builder": "21.2.0",
     "electron-rebuild": "^1.8.6",
     "mocha": "^6.2.2",
